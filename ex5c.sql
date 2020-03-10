@@ -1,0 +1,2 @@
+SELECT* FROM pedidos 
+WHERE data_pedido BETWEEN '2010-01-01' AND '2010-12-31';

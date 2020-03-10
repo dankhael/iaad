@@ -1,0 +1,1 @@
+O banco de dados é a coleção de dados em si, já o SGBD é o software que auxilia o gerenciamento desses dados
