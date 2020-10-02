@@ -34,7 +34,8 @@ VALUES
 (2, 'Picpay'),
 (3, 'Nubank'),
 (4, 'Ifood'),
-(5, 'Tinder');
+(5, 'Tinder')
+(6, 'Twitter');
 
 INSERT INTO programador
 VALUES
