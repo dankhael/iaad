@@ -1,0 +1,72 @@
+CREATE SCHEMA BD_STARTUP;
+USE BD_STARTUP;
+
+CREATE TABLE Startup (
+id_startup int,
+nome_startup varchar(50),
+PRIMARY KEY(id_startup)
+);
+
+CREATE TABLE Linguagem_Programação (
+id_linguagem int,
+linguagem varchar(50),
+PRIMARY KEY(id_linguagem)
+);
+
+CREATE TABLE Programador (
+id_programador int,
+id_startup int,
+nome_programador varchar(50),
+PRIMARY KEY(id_programador),
+FOREIGN KEY(id_startup) REFERENCES Startup(id_startup)
+);
+
+CREATE TABLE Programador_Linguagem (
+id_programador int,
+id_linguagem int,
+FOREIGN KEY(id_programador) REFERENCES Programador(id_programador),
+FOREIGN KEY(id_linguagem) REFERENCES Linguagem_Programação(id_linguagem)
+);
+
+INSERT INTO startup
+VALUES 
+(1, 'Uber'),
+(2, 'Picpay'),
+(3, 'Nubank'),
+(4, 'Ifood'),
+(5, 'Tinder');
+
+INSERT INTO programador
+VALUES
+(1, 2, 'Marcos Lemos'),
+(2, 2, 'Jenifer Rocha'),
+(3,3, 'Daniel Rivera'),
+(4,1, 'Raphael Lima'),
+(5,5, 'João Ricardo'),
+(6,5, 'Luana Melo'),
+(7,4, 'Alessandra Narcisa'),
+(8,5, 'Pablo Marcelo');
+
+INSERT INTO linguagem_programação
+VALUES
+(1,'Python'),
+(2,'PHP'),
+(3, 'Java'),
+(4,'Swift'),
+(5,'C#'),
+(6,'JavaScript');
+
+INSERT INTO programador_linguagem
+VALUES
+(1,1),
+(1,3),
+(2,4),
+(3,1),
+(3,2),
+(3,3),
+(4,6),
+(4,4),
+(5,1),
+(5,5),
+(6,5),
+(6,6);
