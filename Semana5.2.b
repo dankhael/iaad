@@ -38,4 +38,14 @@ ON p.id_programador = pl.id_programador
 WHERE pl.id_linguagem IS NULL;
 
 V-
+SELECT s.nome_startup, p.nome_programador
+FROM startup as s
+LEFT JOIN programador as p
+ON s.id_startup = p.id_startup;
 
+VI-
+SELECT s.nome_startup, p.nome_programador
+FROM startup as s
+LEFT JOIN programador as p
+ON s.id_startup = p.id_startup
+WHERE p.nome_programador IS NULL;
