@@ -1,0 +1,17 @@
+a)
+SELECT d.Dnome, COUNT(Cpf) as 'Numero de Funcionários' ,AVG(salario) as 'Media Salarial'
+FROM funcionario as f
+JOIN departamento as d
+ON d.Dnumero = f.dnr
+GROUP BY dnr
+HAVING AVG(Salario) > 30000;
+
+b)
+SELECT d.dnome, COUNT(f.Cpf)
+FROM funcionario as f
+JOIN departamento as d
+ON d.Dnumero = f.Dnr
+WHERE f.Salario> 30000 AND f.Sexo = 'M'
+GROUP BY dnr;
+
+c)
