@@ -15,3 +15,77 @@ WHERE f.Salario> 30000 AND f.Sexo = 'M'
 GROUP BY dnr;
 
 c)
+SELECT Pnome 
+FROM funcionario
+WHERE Dnr = (SELECT Dnr FROM funcionario WHERE salario = (SELECT max(salario) FROM funcionario));
+
+d)
+SELECT Pnome, cpf_supervisor 
+FROM funcionario 
+WHERE cpf_supervisor IN (SELECT cpf FROM funcionario WHERE cpf_supervisor = 88866555576);
+
+e)
+SELECT Pnome 
+FROM funcionario 
+WHERE salario >= (SELECT min(salario) FROM funcionario) + 10000;
+
+f)
+CREATE VIEW view_name AS
+SELECT d.Dnome, f.Pnome, f.salario 
+FROM departamento AS d
+INNER JOIN funcionario AS f
+ON d.cpf_gerente = f.cpf;
+
+g)
+SELECT f.Pnome, (SELECT f2.pnome FROM funcionario AS f2 WHERE f.cpf_supervisor = f2.cpf) AS nome_supervisor, f.salario 
+FROM funcionario as f
+INNER JOIN departamento as d
+ON d.Dnumero = f.dnr 
+WHERE Dnome = "Pesquisa";
+
+h)
+CREATE VIEW view_name AS
+SELECT p.Projnome, d.Dnome, count(f.cpf), sum(t.horas) 
+FROM projeto as p
+LEFT JOIN departamento as d
+ON d.Dnumero = p.Dnum
+INNER JOIN funcionario as f
+ON f.dnr = d.Dnumero
+INNER JOIN trabalha_em as t
+ON t.Fcpf = f.cpf 
+GROUP BY Projnome;
+
+i)
+CREATE view_name AS
+SELECT p.Projnome, d.Dnome, count(f.cpf), sum(t.horas) 
+FROM projeto as p
+LEFT JOIN departamento as d
+ON d.Dnumero = p.Dnum
+INNER JOIN funcionario as f
+ON f.dnr = d.Dnumero
+INNER JOIN trabalha_em as t
+ON t.Fcpf = f.cpf 
+GROUP BY Projnome 
+HAVING count(f.cpf) > 1;
+
+j)
+I-
+SELECT dnr, count(cpf), sum(salario), AVG(salario) 
+FROM funcionario 
+GROUP BY dnr;
+II-
+SELECT dnr, count(cpf) 
+FROM funcionario 
+GROUP BY dnr 
+HAVING sum(salario) > 100000;
+III-
+SELECT dnr, avg(salario) 
+FROM funcionario 
+GROUP BY dnr
+HAVING count(cpf) > (SELECt count(*) FROM funcionario WHERE dnr = 4);
+
+l)
+
+
+m)
+
