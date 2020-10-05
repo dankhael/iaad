@@ -85,7 +85,13 @@ GROUP BY dnr
 HAVING count(cpf) > (SELECt count(*) FROM funcionario WHERE dnr = 4);
 
 l)
-
+CREATE ASSETRION burnout
+CHECK (NOT EXISTS(SELECT * FROM trabalha_em as t WHERE t.horas > 40 ));
 
 m)
+CREATE TRIGGER VIOLACAO_HORAS
+BEFORE INSERT OR UPDATE OF horas ON trabalha_em
+FOR EACH ROW
+WHEN(NEW.horas > 40)
+INFORM_MANAGER(NEW.horas);
 
